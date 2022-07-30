@@ -38,4 +38,8 @@ Each returns an lvalue reference to the constructed object. Then, using methods,
 
 There are two methods: `time()` and `call()`.  
 `time()` sets interval or delay after which function will be called.  
-`call()` provides a function to call.
+`call()` provides a function to call.  
+
+Additionaly `Repeating` has also 2 additional methods.  
+`stop()` stops executing and destroys object.  
+`limit()` sets limit to how many time function should be called. (WIP)
