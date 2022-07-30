@@ -21,7 +21,7 @@ int main() {
 	std::atomic<double> d = 0; // just to make sure everything is fine
 
 	// Repeats `print_value` function every second.
-	Schedule::make_repeating().time(1s).call(std::bind(print_value<decltype(d)>, std::ref(d)))
+	Schedule::make_repeating().time(1s).call(std::bind(print_value<decltype(d)>, std::ref(d)));
 
 	while(true) {
 		// Increase value by small amount. +- 1 per second on my machine
