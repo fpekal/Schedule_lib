@@ -34,7 +34,7 @@ The library is used here for debugging. We can see a value of variable `d` while
 ## How to use
 The library gives us two functions. Both constructs an object and stores it in a container.  
 These functions are named `Schedule::make_delay()` and `Schedule::make_repeating()`.  
-Each returns a lvalue reference to the constructed object. Then, using methods, we can configure these objects.  
+Each returns an lvalue reference to the constructed object. Then, using methods, we can configure these objects.  
 
 There are two methods: `time()` and `call()`.  
 `time()` sets interval or delay after which function will be called.  
