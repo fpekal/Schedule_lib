@@ -39,9 +39,16 @@ void Schedule::iterate_repeats() {
 		auto delta_time = std::chrono::system_clock::now() - iter->last_call;
 
 		if (delta_time >= iter->interval) {
-			if (iter->function != nullptr)
-				iter->function();
-			iter->last_call = std::chrono::system_clock::now();
+			if (iter->left_calls == -1 || iter->left_calls > 0) {
+				if (iter->function != nullptr)
+					iter->function();
+				iter->last_call = std::chrono::system_clock::now();
+				if (iter->left_calls > 0) --iter->left_calls;
+				if (iter->left_calls == 0) {
+					iter->stop();
+					break;
+				}
+			}
 		}
 	}
 }
@@ -85,4 +92,10 @@ Schedule::Repeating& Schedule::make_repeating() {
 	instance.sync.store(true, std::memory_order_release);
 	instance.repeats.back().iterator = --instance.repeats.end();
 	return instance.repeats.back();
+}
+
+Schedule::Repeating& Schedule::Repeating::limit(long long left_calls) {
+	this->left_calls = left_calls;
+	instance.sync.store(true, std::memory_order_release);
+	return *this;
 }

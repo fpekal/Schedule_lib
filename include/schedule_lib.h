@@ -50,12 +50,13 @@ public:
 
 		std::chrono::seconds interval;
 		std::function<void()> function;
+		long long left_calls;
 
 		std::chrono::system_clock::time_point last_call;
 
 		std::list<Repeating>::iterator iterator;
 
-		Repeating() : last_call{ std::chrono::system_clock::now() }, interval{ 0 }, function{ nullptr } {};
+		Repeating() : last_call{ std::chrono::system_clock::now() }, interval{ 0 }, function{ nullptr }, left_calls{ -1 } {};
 
 	public:
 		// Set interval for calling.
@@ -64,6 +65,8 @@ public:
 		Repeating& call(std::function<void()> function);
 		// Stop further repeating and delete object.
 		void stop();
+		// Set limit to how many calls will be made.
+		Repeating& limit(long long left_calls);
 	};
 
 	// Create `Repeating` object.
