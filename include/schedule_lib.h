@@ -8,10 +8,8 @@
 #include <list>
 
 class Schedule {
-public:
 	static Schedule instance;
 
-private:
 	Schedule() : thread{ std::bind(&Schedule::thread_func, this) }, active{ true }, sync{ false } {}
 
 	~Schedule();

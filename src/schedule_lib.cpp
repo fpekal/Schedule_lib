@@ -1,6 +1,6 @@
 #include "../include/schedule_lib.h"
 
-static Schedule Schedule::instance;
+Schedule Schedule::instance;
 
 Schedule::~Schedule() {
 	active = false;
