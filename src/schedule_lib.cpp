@@ -83,5 +83,6 @@ void Schedule::Repeating::stop() {
 Schedule::Repeating& Schedule::make_repeating() {
 	instance.repeats.push_back(Repeating{});
 	instance.sync.store(true, std::memory_order_release);
+	instance.repeats.back().iterator = --instance.repeats.end();
 	return instance.repeats.back();
 }
