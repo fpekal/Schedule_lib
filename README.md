@@ -29,7 +29,7 @@ int main() {
 	}
 }
 ```
-The library is used here for debugging. We can see a value of variable `d` while main thread is in an  infinite loop.
+The library is used here for debugging. We can see a value of variable `d` while a main thread is in an infinite loop.
 
 ## How to use
 The library gives us two functions. Both constructs an object and stores it in a container.  
@@ -37,9 +37,9 @@ These functions are named `Schedule::make_delay()` and `Schedule::make_repeating
 Each returns an lvalue reference to the constructed object. Then, using methods, we can configure these objects.  
 
 There are two methods: `time()` and `call()`.  
-`time()` sets interval or delay after which function will be called.  
+`time()` sets an interval or a delay after which the function will be called.  
 `call()` provides a function to call.  
 
 `Repeating` has also 2 additional methods.  
-`stop()` stops executing and destroys object.  
-`limit()` sets limit to how many time function should be called before automatically calling `stop()`. (WIP)
+`stop()` stops executing and destroys the object.  
+`limit()` sets a limit to how many time the function should be called before automatically calling `stop()`.
