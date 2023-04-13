@@ -53,7 +53,7 @@ void Schedule::iterate_repeats() {
 	}
 }
 
-Schedule::Delay& Schedule::Delay::time(std::chrono::seconds duration) {
+Schedule::Delay& Schedule::Delay::time(std::chrono::milliseconds duration) {
 	this->duration = duration;
 	instance.sync.store(true, std::memory_order_release);
 	return *this;
@@ -71,7 +71,7 @@ Schedule::Delay& Schedule::make_delay() {
 	return instance.delays.back();
 }
 
-Schedule::Repeating& Schedule::Repeating::time(std::chrono::seconds interval) {
+Schedule::Repeating& Schedule::Repeating::time(std::chrono::milliseconds interval) {
 	this->interval = interval;
 	instance.sync.store(true, std::memory_order_release);
 	return *this;

@@ -28,7 +28,7 @@ public:
 	class Delay {
 		friend class Schedule;
 
-		std::chrono::seconds duration;
+		std::chrono::milliseconds duration;
 		std::function<void()> function;
 
 		std::chrono::system_clock::time_point start_point;
@@ -37,7 +37,7 @@ public:
 
 	public:
 		// Set delay after which callable object will be called.
-		Delay& time(std::chrono::seconds duration);
+		Delay& time(std::chrono::milliseconds duration);
 		// Set callable object to call.
 		Delay& call(std::function<void()> function);
 	};
@@ -48,7 +48,7 @@ public:
 	class Repeating {
 		friend class Schedule;
 
-		std::chrono::seconds interval;
+		std::chrono::milliseconds interval;
 		std::function<void()> function;
 		long long left_calls;
 
@@ -60,7 +60,7 @@ public:
 
 	public:
 		// Set interval for calling.
-		Repeating& time(std::chrono::seconds interval);
+		Repeating& time(std::chrono::milliseconds interval);
 		// Set callable object to call.
 		Repeating& call(std::function<void()> function);
 		// Stop further repeating and delete object.
